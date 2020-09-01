@@ -53,7 +53,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - name: Increase virtual memory on restart
     shell: echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
-  # Use docer_container module
+  # Use docker_container module
   - name: download and launch a docker elk container
     docker_container:
       name: elk
@@ -85,6 +85,7 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
+
 What aspect of security do load balancers protect? What is the advantage of a jump box?
 Load balancers receive any traffic that comes into the website and distributes it across multiple servers. It helps to mitigate DoS attacks. 
 A jump box prevents all azure VM’s to be exposed to the public. It controls access to the other machines by allowing connections from specific IP addresses and forwarding to those machines.
@@ -92,11 +93,11 @@ A jump box prevents all azure VM’s to be exposed to the public. It controls ac
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
 What does Filebeat watch for? 
 Filebeat enables analysts to monitor files for suspicious changes. It collects data about the file system.
+
 What does Metricbeat record?
 It collects machine metrics, such as uptime, and CPU usage. Metricbeat makes it easy to collect specific information about the machines in the network
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
@@ -110,7 +111,6 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the jump box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-Add whitelisted IP addresses: 
 24.12.70.52
 
 Machines within the network can only be accessed by the jump box and the web servers.
@@ -118,6 +118,7 @@ Which machine did you allow to access your ELK VM? What was its IP address?
 Jump Box: 40.122.215.250 or 10.0.0.4
 Web-1: 10.0.0.7
 Web-2: 10.0.0.8
+
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses         |
@@ -128,10 +129,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-What is the main advantage of automating configuration with Ansible?
-It is easier to replicate the configuration to a group of machines
-and configure more machines at the same time. 
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because... it is easier to replicate the configuration to a group of machines, and configure more machines at the same time. 
 
 The playbook implements the following tasks:
 - Specify the group to run the configuration, download and install docker module, configure the target VMs to use more memory, use sysctl to make the configurations persistent and run automatically after restart, download do ELK docker container and configure it to start with port mappings 5601, 9200, 5044
@@ -141,9 +139,8 @@ The following screenshot displays the result of running `docker ps` after succes
 Screenshot of docker ps output](Images/ElkContainer.png)
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-List the IP addresses of the machines monitored by ELK: 
-Web-1 and Web-2 VMs
+This ELK server is configured to monitor the following machines: 
+Web-1 (10.0.0.7) and Web-2 (10.0.0.8) VMs
 
 We have installed the following Beats on these machines:
 Filebeat and Metricbeat
