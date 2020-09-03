@@ -9,7 +9,7 @@ Path containing the network diagram: Images/ElkProjectND.pdf)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  Enter the playbook file install-elk.yml
+  Playbook file install-elk.yml transcript:
 ---
 - name: Config ELK VM with Docker
   hosts: elk
