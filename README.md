@@ -9,7 +9,7 @@ Path containing the network diagram: Images/ElkProjectND.pdf)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  Enter the playbook file.install-elk.yml
+  Enter the playbook file install-elk.yml
 ---
 - name: Config ELK VM with Docker
   hosts: elk
@@ -82,7 +82,7 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA.
 
 Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
 
@@ -114,7 +114,6 @@ Only the jump box machine can accept connections from the Internet. Access to th
 24.12.70.52
 
 Machines within the network can only be accessed by the jump box and the web servers.
-Which machine did you allow to access your ELK VM? What was its IP address?
 Jump Box: 40.122.215.250 or 10.0.0.4
 Web-1: 10.0.0.7
 Web-2: 10.0.0.8
